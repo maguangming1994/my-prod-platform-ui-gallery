@@ -10,8 +10,8 @@
 
 ## 当前覆盖
 
-- 22 套横向 UI 画板
-- 82 个关键高保真移动界面与 1 个桌面后台审核界面，共 83 个界面
+- 23 套横向 UI 画板
+- 86 个关键高保真移动界面与 1 个桌面后台审核界面，共 87 个界面
 - 游客、普通用户、OPC 负责人、OPC 子账号、讲师、代理、销售、综合经营账号、平台/区域管理员
 - 四类商品：录播课程、实物商品、虚拟商品、预约服务
 - 登录、发现、购买、支付、订单、履约、售后、资产、提现、任务、社区、客服、多经营身份、OPC 保证金缴退、经营、财税与全局状态
@@ -27,8 +27,12 @@
 - `agent-onboarding-prompts.md`：代理准入画板的视觉方向与最终出图提示词
 - `business-identity-deposit-flow.md`：多经营身份、OPC 类目保证金与退保审核流程
 - `business-identity-deposit-prompts.md`：第 19–21 套画板的视觉方向与最终出图提示词
+- `agent-role-permissions-flow.md`：代理星卡采购、下级代理审核与本区域销售管理流程
+- `agent-role-permissions-prompts.md`：第 04 套代理核心操作画板的最终出图提示词
 - `implementation-identity-deposit-brief.md`：第 22 套画板的真实实施边界与页面 brief
 - `implementation-identity-deposit-prompts.md`：第 22 套画板的最终出图提示词与禁止伪造项
+- `agent-initial-stock-implementation-brief.md`：第 23 套画板的 V093 视觉基线、V094 真实实现边界与状态说明
+- `agent-initial-stock-implementation-prompts.md`：第 23 套画板的归档提示词与下一版重绘约束
 - `system-flow-implementation.md`：UI、前端路由、后端服务、异常流程和人工确认项的实施矩阵
 
 ## 视觉基准
@@ -40,7 +44,7 @@
 - 红色只用于真实错误与危险操作
 - 清晰中文、真实图片、12–16px 圆角、细边框和克制阴影
 
-这 83 个关键界面用于锁定完整设计语言、角色差异与真实实施边界，其余长尾场景继续按同一组件、业务模板和状态规则扩展。
+这 87 个关键界面用于锁定完整设计语言、角色差异与真实实施边界，其余长尾场景继续按同一组件、业务模板和状态规则扩展。
 
 画板是目标设计，不代表所有业务都已上线。在线总览中的“流程与实现状态”及本目录的实施矩阵，才是当前设计与代码覆盖关系的评审入口。
 
