@@ -13,24 +13,55 @@
       <div><strong>星链移动端成品 UI</strong><span>FINAL MOBILE UI BOARDS · V2</span></div>
     </div>
     <div class="metrics">
-      <span><b>21</b> 套画板</span>
-      <span><b>79</b> 个高保真界面</span>
+      <span><b>22</b> 套画板</span>
+      <span><b>83</b> 个高保真界面</span>
       <span><b>9</b> 类角色</span>
     </div>
   </header>
 
   <main>
     <section class="intro">
-      <p class="eyebrow">PRODUCTION-READY MOBILE UI</p>
-      <h1>这次只展示成品设计稿</h1>
-      <p>保持参考图的深海蓝、青绿主操作、真实图片、清晰中文与可开发组件。点击任意画板可查看原始大图。</p>
+      <p class="eyebrow">DESIGN BASELINE · IMPLEMENTATION TRACKING</p>
+      <h1>成品设计稿与真实实施状态</h1>
+      <p>22 套画板用于锁定目标体验与真实实施边界；下方流程矩阵同步标记真实前端、后端、异常分支与待确认项。画板不等于已上线能力。</p>
       <nav>
+        <a href="#implementation">流程与实现</a>
         <a href="#consumer">用户端</a>
         <a href="#business">经营端</a>
         <a href="#agent-onboarding">代理准入</a>
         <a href="#states">全局状态</a>
         <a href="./mobile-design-system.md">设计规范</a>
       </nav>
+    </section>
+
+    <section id="implementation" class="board-section implementation-section">
+      <div class="section-heading"><span>00</span><div><h2>系统流程与实现状态</h2><p>最近更新聚焦多经营身份、OPC 保证金和代理首批星卡；状态以代码、接口和自动验证为准。</p></div></div>
+      <div class="status-legend">
+        <span class="status-chip done">已实现</span>
+        <span class="status-chip partial">部分实现</span>
+        <span class="status-chip design">仅设计</span>
+        <span class="status-chip confirm">待确认</span>
+      </div>
+      <div class="flow-grid">
+        <article class="flow-card"><div class="flow-card-head"><strong>普通用户消费</strong><span class="status-chip partial">部分实现</span></div><p>登录 → 商品 → 报价 → 随机订单 → 可信支付 → 履约 → 售后/退款</p><small>主交易底座已具备；真实渠道全异常、现金钱包和课程购买闭环仍未完成。</small></article>
+        <article class="flow-card"><div class="flow-card-head"><strong>OPC 入驻与经营</strong><span class="status-chip partial">部分实现</span></div><p>实名 → 类目/资质 → 审核 → 最高保证金 → 缴纳 → 生效 → 经营</p><small>保证金账户、规则和流水已接真实查询；支付回调与原子激活尚未接入。</small></article>
+        <article class="flow-card"><div class="flow-card-head"><strong>代理准入与星卡</strong><span class="status-chip design">存在断点</span></div><p>申请 → 区域审核 → 指定首批星卡 → 72h 支付 → 席位竞争 → 激活/退款</p><small>当前首批进货仅允许已激活代理，待修复未激活申请人的首次进货死结。代理库存仅为付费星卡。</small></article>
+        <article class="flow-card"><div class="flow-card-head"><strong>销售与财税</strong><span class="status-chip partial">部分实现</span></div><p>归属 → 推广 → 客户/团队 → 佣金 → 月结/预计税费 → 季度申报</p><small>团队和佣金已具备；月度经营结算不得等同季度法定申报。</small></article>
+      </div>
+      <div class="implementation-table-wrap">
+        <table class="implementation-table">
+          <thead><tr><th>画板/流程</th><th>真实前端</th><th>真实后端</th><th>状态与下一步</th></tr></thead>
+          <tbody>
+            <tr><td>19 多经营身份</td><td>身份中心 → 独立详情 → 工作台</td><td>OPC/代理/销售权限查询</td><td><span class="status-chip partial">部分实现</span>补审核中/可申请身份聚合</td></tr>
+            <tr><td>20 保证金缴纳</td><td>保证金账户只读页</td><td>应缴/已缴/缺口/类目最高标准/流水</td><td><span class="status-chip design">仅设计</span>补真实支付会话、回调与原子生效</td></tr>
+            <tr><td>21 退出与退保</td><td>前置条件与未开放原因</td><td>暂无资格快照/退保申请/退款状态机</td><td><span class="status-chip confirm">待确认</span>规则确认前禁止提交</td></tr>
+            <tr><td>16–18 代理激活</td><td>申请/经营页部分存在</td><td>申请、审核、库存、原子席位函数</td><td><span class="status-chip design">存在断点</span>补未激活首批进货与退款</td></tr>
+            <tr><td>13 财税</td><td>身份收益局部展示</td><td>收益账户、季度税务批次</td><td><span class="status-chip partial">部分实现</span>补月度经营结算读模型</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="implementation-notice"><strong>本轮安全边界</strong><p>现金钱包、保证金缴纳/退保、代理首批支付与月度结算不得用模拟按钮伪造完成。所有资金与激活状态必须由服务端可信事实推进。</p></div>
+      <p class="flow-link">完整主流程、异常分支、人工确认清单和后续顺序：<a href="./system-flow-implementation.md">查看系统流程与实施矩阵</a></p>
     </section>
 
     <section id="consumer" class="board-section">
@@ -51,6 +82,7 @@
         <figure><figcaption><div><b>19</b><strong>多经营身份与详情</strong></div><span>多身份选择 · OPC 详情 · 代理详情 · 销售详情</span></figcaption><a href="./boards/19-business-identity-details.png"><img src="./boards/19-business-identity-details.png" alt="经营身份多身份选择与 OPC、代理、销售身份详情成品 UI" loading="lazy" /></a></figure>
         <figure><figcaption><div><b>20</b><strong>OPC 类目保证金缴纳</strong></div><span>选择类目 · 最高标准 · 确认支付 · 正式生效</span></figcaption><a href="./boards/20-opc-category-deposit-payment.png"><img src="./boards/20-opc-category-deposit-payment.png" alt="OPC 经营类目选择、保证金计算、支付与生效成品 UI" loading="lazy" /></a></figure>
         <figure><figcaption><div><b>21</b><strong>OPC 保证金与退保</strong></div><span>保证金账户 · 资格检查 · 提交退保 · 审核进度</span></figcaption><a href="./boards/21-opc-deposit-refund.png"><img src="./boards/21-opc-deposit-refund.png" alt="OPC 保证金账户、退保资格检查、退保申请与审核进度成品 UI" loading="lazy" /></a></figure>
+        <figure><figcaption><div><b>22</b><strong>经营身份真实实施态</strong></div><span>多身份实况 · 身份详情 · 保证金宽限 · 退保限制</span></figcaption><a href="./boards/22-implemented-identity-deposit.png"><img src="./boards/22-implemented-identity-deposit.png" alt="多经营身份、OPC 保证金宽限与退保未开放真实实施态 UI" loading="lazy" /></a></figure>
         <figure><figcaption><div><b>04</b><strong>核心业务表单</strong></div><span>身份申请 · 商品发布 · 采购 · 发帖</span></figcaption><a href="./boards/04-core-forms.png"><img src="./boards/04-core-forms.png" alt="经营申请、商品发布、采购和发帖成品 UI" /></a></figure>
         <figure><figcaption><div><b>08</b><strong>OPC 入驻与权限</strong></div><span>入驻 · 类目保证金 · 成员 · 子账号</span></figcaption><a href="./boards/08-opc-onboarding-permissions.png"><img src="./boards/08-opc-onboarding-permissions.png" alt="OPC 入驻、类目保证金、成员和权限成品 UI" loading="lazy" /></a></figure>
         <figure><figcaption><div><b>15</b><strong>子账号与讲师</strong></div><span>子账号工作台 · 讲师工作台 · 课时 · 预约</span></figcaption><a href="./boards/15-opc-subaccount-teacher.png"><img src="./boards/15-opc-subaccount-teacher.png" alt="OPC 子账号、讲师、课时和预约成品 UI" loading="lazy" /></a></figure>
