@@ -82,6 +82,17 @@ main { width: min(1500px, calc(100% - 40px)); margin: 0 auto; }
 .implementation-notice { margin-top: 16px; padding: 18px 20px; border: 1px solid #f4d38a; border-radius: 16px; background: #fffaeb; }
 .implementation-notice strong { color: #7a2e0e; font-size: 12px; }
 .implementation-notice p { margin: 7px 0 0; color: #7a4d00; font-size: 10px; line-height: 1.7; }
+.account-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.account-summary article { display: flex; align-items: baseline; gap: 9px; padding: 18px 20px; border: 1px solid var(--border); border-radius: 14px; background: #fff; }
+.account-summary b { color: var(--teal); font-size: 24px; }
+.account-summary span { color: var(--muted); font-size: 10px; }
+.account-table a { color: var(--teal); font-weight: 700; text-decoration: none; }
+.account-table a:hover { text-decoration: underline; }
+.account-table code { color: var(--navy); font-size: 10px; font-weight: 800; }
+.credential-ref { display: inline-flex; padding: 5px 8px; border-radius: 8px; color: #175cd3; background: #eff8ff; font-size: 9px; font-weight: 800; }
+.account-security-notice { margin-top: 16px; padding: 18px 20px; border: 1px solid #b2ddff; border-radius: 16px; background: #eff8ff; }
+.account-security-notice strong { color: #1849a9; font-size: 12px; }
+.account-security-notice p { margin: 7px 0 0; color: #175cd3; font-size: 10px; line-height: 1.7; }
 .flow-link { margin: 16px 2px 0; color: var(--muted); font-size: 11px; }
 .flow-link a { color: var(--teal); font-weight: 700; text-decoration: none; }
 .flow-link a:hover { text-decoration: underline; }
@@ -105,4 +116,5 @@ footer { margin-top: 30px; padding: 28px 20px; color: rgba(255,255,255,.68); bac
   figcaption { align-items: flex-start; flex-direction: column; }
   .status-legend { margin-left: 0; }
   .flow-grid { grid-template-columns: 1fr; }
+  .account-summary { grid-template-columns: 1fr; }
 }

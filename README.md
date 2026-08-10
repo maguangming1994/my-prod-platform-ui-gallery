@@ -34,6 +34,7 @@
 - `agent-initial-stock-implementation-brief.md`：第 23 套画板的 V093 视觉基线、V094 真实实现边界与状态说明
 - `agent-initial-stock-implementation-prompts.md`：第 23 套画板的归档提示词与下一版重绘约束
 - `system-flow-implementation.md`：UI、前端路由、后端服务、异常流程和人工确认项的实施矩阵
+- `index.html#test-accounts`：预发布多角色账号、登录入口、权限范围和最近验证状态；公开页不保存密码
 
 ## 视觉基准
 
