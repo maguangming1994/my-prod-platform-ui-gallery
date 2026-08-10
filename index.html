@@ -44,8 +44,8 @@
       </div>
       <div class="flow-grid">
         <article class="flow-card"><div class="flow-card-head"><strong>普通用户消费</strong><span class="status-chip partial">部分实现</span></div><p>登录 → 商品 → 报价 → 随机订单 → 可信支付 → 履约 → 售后/退款</p><small>主交易底座已具备；真实渠道全异常、现金钱包和课程购买闭环仍未完成。</small></article>
-        <article class="flow-card"><div class="flow-card-head"><strong>OPC 入驻与经营</strong><span class="status-chip partial">部分实现</span></div><p>实名 → 类目/资质 → 审核 → 最高保证金 → 缴纳 → 生效 → 经营</p><small>保证金账户、规则和流水已接真实查询；支付回调与原子激活尚未接入。</small></article>
-        <article class="flow-card"><div class="flow-card-head"><strong>代理准入与星卡</strong><span class="status-chip design">存在断点</span></div><p>申请 → 区域审核 → 指定首批星卡 → 72h 支付 → 席位竞争 → 激活/退款</p><small>当前首批进货仅允许已激活代理，待修复未激活申请人的首次进货死结。代理库存仅为付费星卡。</small></article>
+        <article class="flow-card"><div class="flow-card-head"><strong>OPC 入驻与经营</strong><span class="status-chip partial">部分实现</span></div><p>实名 → 类目/资质 → 审核 → 最高保证金 → 缴纳 → 生效 → 经营</p><small>保证金账户、规则和流水已接真实查询；一期渠道已确认微信、支付宝和对公转账，可信入账与原子激活尚未接入。</small></article>
+        <article class="flow-card"><div class="flow-card-head"><strong>代理准入与星卡</strong><span class="status-chip partial">第一阶段完成</span></div><p>申请 → 区域审核 → 指定首批星卡 → 72h 支付 → 席位竞争 → 激活/退款</p><small>待首次进货申请人已可读取服务端唯一方案并创建随机订单；可信支付、原子席位结果和失败退款仍待建设。代理库存仅为付费星卡。</small></article>
         <article class="flow-card"><div class="flow-card-head"><strong>销售与财税</strong><span class="status-chip partial">部分实现</span></div><p>归属 → 推广 → 客户/团队 → 佣金 → 月结/预计税费 → 季度申报</p><small>团队和佣金已具备；月度经营结算不得等同季度法定申报。</small></article>
       </div>
       <div class="implementation-table-wrap">
@@ -53,14 +53,14 @@
           <thead><tr><th>画板/流程</th><th>真实前端</th><th>真实后端</th><th>状态与下一步</th></tr></thead>
           <tbody>
             <tr><td>19 多经营身份</td><td>身份中心 → 独立详情 → 工作台</td><td>OPC/代理/销售权限查询</td><td><span class="status-chip partial">部分实现</span>补审核中/可申请身份聚合</td></tr>
-            <tr><td>20 保证金缴纳</td><td>保证金账户只读页</td><td>应缴/已缴/缺口/类目最高标准/流水</td><td><span class="status-chip design">仅设计</span>补真实支付会话、回调与原子生效</td></tr>
+            <tr><td>20 保证金缴纳</td><td>保证金账户只读页</td><td>应缴/已缴/缺口/类目最高标准/流水</td><td><span class="status-chip design">仅设计</span>微信/支付宝可信回调 + 对公流水复核</td></tr>
             <tr><td>21 退出与退保</td><td>前置条件与未开放原因</td><td>暂无资格快照/退保申请/退款状态机</td><td><span class="status-chip confirm">待确认</span>规则确认前禁止提交</td></tr>
-            <tr><td>16–18 代理激活</td><td>申请/经营页部分存在</td><td>申请、审核、库存、原子席位函数</td><td><span class="status-chip design">存在断点</span>补未激活首批进货与退款</td></tr>
+            <tr><td>16–18 代理激活</td><td>申请卡片可查唯一方案并创建首批订单</td><td>申请、方案、随机订单、库存、原子席位函数</td><td><span class="status-chip partial">部分实现</span>补可信支付、激活与退款</td></tr>
             <tr><td>13 财税</td><td>身份收益局部展示</td><td>收益账户、季度税务批次</td><td><span class="status-chip partial">部分实现</span>补月度经营结算读模型</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="implementation-notice"><strong>本轮安全边界</strong><p>现金钱包、保证金缴纳/退保、代理首批支付与月度结算不得用模拟按钮伪造完成。所有资金与激活状态必须由服务端可信事实推进。</p></div>
+      <div class="implementation-notice"><strong>本轮安全边界</strong><p>现金钱包、保证金缴纳/退保、代理首批支付与月度结算不得用模拟按钮伪造完成。所有资金与激活状态必须由服务端可信事实推进。19–21 号保留目标流程 <code>¥5,000</code>，第 22 套保留真实实施演示 <code>¥30,000</code>，两种金额不代表同一环境事实。</p></div>
       <p class="flow-link">完整主流程、异常分支、人工确认清单和后续顺序：<a href="./system-flow-implementation.md">查看系统流程与实施矩阵</a></p>
     </section>
 
@@ -93,6 +93,7 @@
         <figure><figcaption><div><b>13</b><strong>综合身份与财税</strong></div><span>身份切换 · 跨角色待办 · 收益 · 税务</span></figcaption><a href="./boards/13-multi-role-finance.png"><img src="./boards/13-multi-role-finance.png" alt="综合身份、待办、收益和财税成品 UI" loading="lazy" /></a></figure>
       </div>
       <p class="flow-link">身份层级、保证金计算与退保审核规则：<a href="./business-identity-deposit-flow.md">查看经营身份与 OPC 保证金流程</a></p>
+      <p class="flow-link">代理权限、星卡采购、下级代理与区域销售审核：<a href="./agent-role-permissions-flow.md">查看代理核心操作流程</a></p>
     </section>
 
     <section id="agent-onboarding" class="board-section">
