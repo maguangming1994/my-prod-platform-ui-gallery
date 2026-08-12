@@ -30,5 +30,4 @@
   section.querySelector('.admin-method')?.insertAdjacentHTML('beforebegin','<div class="implementation-notice"><strong>融合设计稿，不等同于当前实施状态</strong><p>“线上原有”来自当前管理端结构与字段；“本轮补全”是为移动端闭环补充的目标交互。画板金额、数量和时效为演示数据，真实状态以服务端与实施矩阵为准。</p></div>');
   document.querySelector('main').appendChild(section);
   document.querySelector('.intro nav')?.insertAdjacentHTML('beforeend','<a href="#admin">后台线上融合版</a>');
-  document.querySelector('.metrics')?.insertAdjacentHTML('beforeend','<span><b>15</b> 套后台画板</span><span><b>30</b> 个后台界面</span>');
 })();

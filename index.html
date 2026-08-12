@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>星链移动端成品 UI 设计稿 V2</title>
+  <title>星链多端 UI 总览与实施状态 V2</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <header class="gallery-header">
     <div class="brand">
       <span class="brand-mark">★</span>
-      <div><strong>星链移动端成品 UI</strong><span>FINAL MOBILE UI BOARDS · V2</span></div>
+      <div><strong>星链多端 UI 总览</strong><span>MOBILE × ADMIN × IMPLEMENTATION · V2</span></div>
     </div>
     <div class="metrics">
-      <span><b>23</b> 套画板</span>
-      <span><b>87</b> 个高保真界面</span>
+      <span><b>38</b> 套画板</span>
+      <span><b>117</b> 个关键界面/状态</span>
+      <span><b>23 + 15</b> 移动端 / 后台</span>
       <span><b>9</b> 类角色</span>
       <span><b>10</b> 个线上账号已验证</span>
     </div>
@@ -24,9 +25,10 @@
     <section class="intro">
       <p class="eyebrow">DESIGN BASELINE · IMPLEMENTATION TRACKING</p>
       <h1>成品设计稿与真实实施状态</h1>
-      <p>23 套画板用于锁定目标体验与真实实施边界；下方流程矩阵同步标记真实前端、后端、异常分支与待确认项。画板不等于已上线能力。</p>
+      <p>38 套画板用于锁定移动端与后台目标体验；覆盖矩阵同步标记真实页面、接口、状态、权限和下一步。画板不等于已上线能力，“线上原有”也不等于整套画板已经实现。</p>
       <nav>
         <a href="#implementation">流程与实现</a>
+        <a href="#coverage">覆盖矩阵</a>
         <a href="#test-accounts">测试账号</a>
         <a href="#consumer">用户端</a>
         <a href="#business">经营端</a>
@@ -43,6 +45,8 @@
         <span class="status-chip partial">部分实现</span>
         <span class="status-chip design">仅设计</span>
         <span class="status-chip confirm">待确认</span>
+        <span class="status-chip snapshot">实施快照</span>
+        <span class="status-chip history">历史参考</span>
       </div>
       <div class="flow-grid">
         <article class="flow-card"><div class="flow-card-head"><strong>普通用户消费</strong><span class="status-chip partial">部分实现</span></div><p>登录 → 商品 → 报价 → 随机订单 → 可信支付 → 履约 → 售后/退款</p><small>主交易底座已具备；真实渠道全异常、现金钱包和课程购买闭环仍未完成。</small></article>
@@ -64,6 +68,38 @@
       </div>
       <div class="implementation-notice"><strong>本轮安全边界</strong><p>创建补缴或首批订单不等于完成付款。现金钱包、退保、真实渠道支付与月度结算不得用模拟按钮伪造完成；资金与激活状态只由服务端可信事实推进。19–21 号保留目标流程 <code>¥5,000</code>，第 22 套保留真实实施演示 <code>¥30,000</code>，两种金额不代表同一环境事实。</p></div>
       <p class="flow-link">完整主流程、异常分支、人工确认清单和后续顺序：<a href="./system-flow-implementation.md">查看系统流程与实施矩阵</a></p>
+    </section>
+
+    <section id="coverage" class="board-section coverage-section">
+      <div class="section-heading"><span>矩阵</span><div><h2>角色、页面、接口、状态与权限覆盖</h2><p>第一阶段统一口径：每个业务域同时核对移动端、后台、服务端事实、数据范围与下一步。</p></div></div>
+      <div class="coverage-summary">
+        <article><span class="status-chip done">已实现</span><b>规则、区域、品牌与协议</b><small>已有真实后台能力；仍需生产发布审批与跨端回归。</small></article>
+        <article><span class="status-chip partial">部分实现</span><b>消费、经营、履约与治理主链路</b><small>主路径已形成，真实渠道、复杂异常或完整 UAT 尚未闭环。</small></article>
+        <article><span class="status-chip design">目标设计</span><b>后台融合画板补全项</b><small>“本轮补全”用于定义后续交互，不是当前上线证明。</small></article>
+        <article><span class="status-chip confirm">待确认</span><b>OPC 退保与月度经营结算</b><small>业务、财务和法务口径确认前保持不可提交状态。</small></article>
+      </div>
+      <div class="implementation-table-wrap">
+        <table class="implementation-table coverage-table">
+          <thead><tr><th>业务域</th><th>主要角色</th><th>移动端</th><th>后台承接</th><th>当前状态</th><th>优先下一步</th></tr></thead>
+          <tbody>
+            <tr><td>登录、商城与消费</td><td>游客 / 普通用户 / 交易运营</td><td>01、02、05、14</td><td>24–26、37–38</td><td><span class="status-chip partial">部分实现</span></td><td>真实支付、退款和四类商品 E2E</td></tr>
+            <tr><td>多经营身份</td><td>OPC / 代理 / 销售 / 综合账号</td><td>03、19、22</td><td>25、35</td><td><span class="status-chip partial">部分实现</span></td><td>统一身份聚合/list/detail</td></tr>
+            <tr><td>OPC 准入与保证金</td><td>OPC / 招商 / 财务</td><td>08、20–22</td><td>27、33</td><td><span class="status-chip partial">部分实现</span></td><td>真实预下单、验签、对公复核后台</td></tr>
+            <tr><td>OPC 退保</td><td>OPC / 招商 / 财务 / 法务</td><td>21、22</td><td>27、33 目标入口</td><td><span class="status-chip confirm">待确认</span></td><td>确认资格、清算和退款规则</td></tr>
+            <tr><td>代理申请与首批星卡</td><td>代理 / 区域运营 / 财务</td><td>16–18、23</td><td>28、33–34、36</td><td><span class="status-chip partial">部分实现</span></td><td>真实查单与竞争失败原路退款</td></tr>
+            <tr><td>下级代理与区域销售</td><td>代理 / 销售 / 区域运营</td><td>04、11、12、16</td><td>28–29</td><td><span class="status-chip partial">部分实现</span></td><td>转移、保护期、审批通知 UAT</td></tr>
+            <tr><td>履约、客服与争议</td><td>用户 / OPC / 客服 / 治理</td><td>05、07、10、15</td><td>26–32</td><td><span class="status-chip partial">部分实现</span></td><td>四类履约、售后、SLA 和仲裁验收</td></tr>
+            <tr><td>收益、提现与财税</td><td>经营身份 / 财务 / 财税</td><td>06、13</td><td>33–35</td><td><span class="status-chip partial">部分实现</span></td><td>提现渠道、对账；月结口径待确认</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="matrix-actions">
+        <a href="./ui-implementation-coverage-matrix.md">查看完整覆盖矩阵</a>
+        <a href="./system-flow-implementation.md">查看流程与实施矩阵</a>
+        <a href="./business-rules-baseline.md">查看已锁定业务规则</a>
+        <a href="./prompt-manifest.md">查看画板任务清单</a>
+      </div>
+      <div class="history-warning"><strong>历史参考边界</strong><p>03、04 号画板中的代理普通商品采购或普通商品库存属于旧稿错误。代理只能采购付费星卡、审核下级代理，以及提交并初审本区域销售；有效开发口径以 11、16、17、23 号画板和服务端规则为准。</p></div>
     </section>
 
     <section id="test-accounts" class="board-section account-section">
@@ -144,7 +180,8 @@
     </section>
   </main>
 
-  <footer>星链移动端成品 UI 设计稿 · 深海蓝 × 青绿统一视觉系统</footer>
+  <footer>星链多端 UI 总览 · 移动端 × 后台 × 真实实施状态</footer>
   <script src="./admin-live-boards.js"></script>
+  <script src="./board-status.js"></script>
 </body>
 </html>
